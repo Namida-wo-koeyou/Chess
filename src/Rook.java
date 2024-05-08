@@ -9,7 +9,7 @@ public class Rook extends Piece{
     public boolean validMove(Turn currentTurn, Board board) {
         Piece targetPos = board.board[currentTurn.endCol][currentTurn.endRow];
       // can't refuse to move when chosen, probably should be a general thing
-        if (!board.unobstructedPathInColumnExists(currentTurn)){
+        if (!board.unobstructedPath(currentTurn)){
             return false;
         }
 

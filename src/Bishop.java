@@ -10,7 +10,9 @@ public class Bishop extends Piece {
 
 
         //moves diagonal TODO: check if path is unobstructed
-        if (!board.unobstructedPathInDiagonalExist(currentTurn)){return false;}
+        if (!board.unobstructedPath(currentTurn)){
+            return false;
+        }
         return Math.abs(currentTurn.endCol - currentTurn.startCol) == Math.abs(currentTurn.endRow - currentTurn.startRow);
     }
 }

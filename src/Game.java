@@ -9,7 +9,7 @@ public class Game {
         GameState game = new GameState();
 
         Board board = game.board;
-        System.out.println(board.toString());
+        board.printBoard();
 
 
         while (true) {
@@ -31,6 +31,20 @@ public class Game {
             game.totalTurnCounter = game.turnBlackCounter + game.turnWhiteCounter;
             int startRow = moveSelect.nextInt() - 1;
             int startCol = moveSelect.nextInt() - 1;
+            while (startCol >= 8|| startRow>=8){
+
+                System.out.println("This selection is invalid");
+                if(startRow>=8 && startCol>=8){
+                    System.out.println("");
+                }
+                if (startRow>=8) {
+                    System.out.println("type your row value 1-8");
+                    startRow= moveSelect.nextInt();
+                }else{
+                    System.out.println("type your row value 1-8");
+                    startCol= moveSelect.nextInt();
+                }
+            }
 
             if (board.board[startRow][startCol] != null) {
                 Piece piece = board.board[startRow][startCol];
@@ -48,10 +62,10 @@ public class Game {
                     if (currentTurn.color == ChessColor.BLACK) {game.turnBlackCounter--;
                     } else {game.turnWhiteCounter--;}
                         game.totalTurnCounter--;
-                        System.out.println(board.toString());
+                        board.printBoard();
                     continue;
                 }
-                //change the white turn into a currentTurn which would equal whoever's turn it is
+                //change the white turn into a currentTurn which would equal whoever turn it is
                 if (piece.validMove(currentTurn, board)) {
                     // store Board.board[startRow][startCol] in a variable to then assign to null
                     Piece i = board.board[startRow][startCol];
@@ -63,14 +77,24 @@ public class Game {
                     System.out.println("This move is invalid.");
                     game.turnBlackCounter--;
                     game.totalTurnCounter--;
-                    System.out.println(board.toString());
+                    board.printBoard();
                 } else {
                     System.out.println("This move is invalid.");
                     game.turnWhiteCounter--;
                     game.totalTurnCounter--;
-                    System.out.println(board.toString());
+                    board.printBoard();
                 }
-            }
+            }else if  ((game.totalTurnCounter % 2) == 0) {
+                System.out.println("This selection is invalid.");
+                game.turnBlackCounter--;
+                game.totalTurnCounter--;
+                board.printBoard();
+            } else {
+
+                game.turnWhiteCounter--;
+                game.totalTurnCounter--;
+                board.printBoard();
+                System.out.println("This selection is invalid.");
         }
-    }}
+    }}}
 

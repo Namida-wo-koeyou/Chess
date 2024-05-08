@@ -6,13 +6,7 @@ public class Queen extends Piece {
     @Override
     public boolean validMove(Turn currentTurn, Board board) {
 
-        if (!board.unobstructedPathInRowExists(currentTurn)){
-            return false;
-        }
-        if (!board.unobstructedPathInColumnExists(currentTurn)){
-            return false;
-        }
-        if (!board.unobstructedPathInDiagonalExist(currentTurn)){
+        if (!board.unobstructedPath(currentTurn)){
             return false;
         }
 //diagonal

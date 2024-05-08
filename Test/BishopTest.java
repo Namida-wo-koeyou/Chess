@@ -6,7 +6,8 @@ import static org.junit.Assert.assertTrue;
 public class BishopTest {
 
   @Test
-    public void BishopDoesntMoveOverPieces(){Board testBoard = new Board();
+    public void BishopDoesntMoveOverPieces(){
+        Board testBoard = new Board();
         Piece bishop = new Bishop("Bishop", ChessColor.WHITE, ChessSymbols.WHITE_BISHOP);
         Piece pawn = new Pawn("Pawn", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
         int startRowBishop = 5;

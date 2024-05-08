@@ -36,7 +36,13 @@ public class BoardTest {
         assertFalse(testBoard.unobstructedPathInRowExists(new Turn(0,7,0,5,ChessColor.BLACK)));
     }
     @Test
-    public void obstructedPathVertically(){Board testBoard =new Board();
+    public void obstructedPathVerticallyDown(){Board testBoard =new Board();
     testBoard.newBoard();
-    assertFalse(testBoard.unobstructedPathInRowExists(new Turn(0,7,2,7,ChessColor.BLACK)));}
+
+    assertFalse(testBoard.unobstructedPathInColumnExists(new Turn(0,7,2,7,ChessColor.BLACK)));}
+    @Test
+    public void obstructedPathVerticallyUp(){Board testBoard =new Board();
+        testBoard.newBoard();
+
+        assertFalse(testBoard.unobstructedPathInColumnExists(new Turn(7,7,5,7,ChessColor.BLACK)));}
 }

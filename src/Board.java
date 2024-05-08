@@ -39,18 +39,24 @@ public class Board {
         board[6][6] = new Pawn("PawnW", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
         board[6][7] = new Pawn("PawnW", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
     }
+public boolean unobstructedPath(Turn currentTurn){
+        if (currentTurn.endCol== currentTurn.startCol && currentTurn.startRow!= currentTurn.endRow){return  unobstructedPathInColumnExists(currentTurn);}
+        else if (currentTurn.endCol!= currentTurn.startCol && currentTurn.startRow== currentTurn.endRow){return unobstructedPathInRowExists(currentTurn);}
+        else if (Math.abs(currentTurn.endCol-currentTurn.startCol) == Math.abs(currentTurn.endRow-currentTurn.startRow))return unobstructedPathInDiagonalExist(currentTurn);{
 
+        } return false;
+}
     public boolean unobstructedPathInColumnExists(Turn currentTurn) {
         //if startRow - endRow >0 use negative for loop, else use positive for loop, i previously only made a positive for loop
         // this will be needed for diagonals too
         if (currentTurn.startRow - currentTurn.endRow > 0) {
-            for (int i = currentTurn.startRow - 1; i > currentTurn.endRow+1; i--) {
+            for (int i = currentTurn.startRow - 1; i > currentTurn.endRow; i--) {
                 if (board[i][currentTurn.startCol] != null) {
                     return false;
                 }
             }
         } else {
-            for (int i = currentTurn.startRow+1; i < currentTurn.endRow-1; i++) {
+            for (int i = currentTurn.startRow+1; i < currentTurn.endRow; i++) {
                 if (board[i][currentTurn.startCol] != null) {
                     return false;
                 }
@@ -147,6 +153,8 @@ public class Board {
         }
         return sb.toString();
     }
+    public void printBoard(){System.out.println(this.toString());}
+
 
     public void setPiece(Piece piece, int row, int col){
 
