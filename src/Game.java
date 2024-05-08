@@ -35,15 +35,18 @@ public class Game {
 
                 System.out.println("This selection is invalid");
                 if(startRow>=8 && startCol>=8){
-                    System.out.println("");
+                    if((game.totalTurnCounter % 2) == 0){
+                    System.out.println("type your row then column value 1-8");
+                    startRow = moveSelect.nextInt();
+                    startCol= moveSelect.nextInt();
                 }
-                if (startRow>=8) {
+                if (startRow>8) {
                     System.out.println("type your row value 1-8");
                     startRow= moveSelect.nextInt();
                 }else{
                     System.out.println("type your row value 1-8");
                     startCol= moveSelect.nextInt();
-                }
+                }}
             }
 
             if (board.board[startRow][startCol] != null) {

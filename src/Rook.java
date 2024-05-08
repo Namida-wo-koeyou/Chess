@@ -7,7 +7,7 @@ public class Rook extends Piece{
 
     @Override
     public boolean validMove(Turn currentTurn, Board board) {
-        Piece targetPos = board.board[currentTurn.endCol][currentTurn.endRow];
+        Piece targetPos = board.board[currentTurn.endRow][currentTurn.endCol];
       // can't refuse to move when chosen, probably should be a general thing
         if (!board.unobstructedPath(currentTurn)){
             return false;

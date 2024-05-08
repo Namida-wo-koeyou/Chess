@@ -72,7 +72,7 @@ public boolean unobstructedPath(Turn currentTurn){
 
 
             for (int i = start; i < end; i++) {
-            if (this.board[currentTurn.startRow][i] != null) {
+            if (i!=currentTurn.startCol && this.board[currentTurn.startRow][i] != null) {
                 return false;
             }
         }
