@@ -25,17 +25,12 @@ public class KnightTest {
     @Test
     public void knightValidMoves() {
         Board testBoard = new Board();
-        Piece knight1 = new Knight("Knight",ChessColor.WHITE,ChessSymbols.WHITE_KNIGHT);
-        int startRow1 = 4;
-        int startCol1 = 4;
-        int startRow2 =7;
-        int startCol2 =7;
-        int startRow3=0;
-        int startCol3=0;
-        testBoard.setPiece(knight1,startRow1,startCol1);
-        Turn turn1 = new Turn(startRow1,startCol1,0,0,ChessColor.WHITE);
-        Turn turn2 = new Turn(startRow2,startCol2,0,0,ChessColor.WHITE);
-        Turn turn3 = new Turn(startRow3,startCol3,0,0,ChessColor.WHITE);
+        Piece knight = new Knight("Knight",ChessColor.WHITE,ChessSymbols.WHITE_KNIGHT);
+        int startRow = 4;
+        int startCol = 4;
+        testBoard.setPiece(knight,startRow,startCol);
+        Turn turn = new Turn(startRow,startCol,,,ChessColor.WHITE);
+
 
 
 
