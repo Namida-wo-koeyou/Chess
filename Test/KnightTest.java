@@ -59,10 +59,24 @@ public class KnightTest {
         testBoard.setPiece(knight,startRow,startCol);
         testBoard.setPiece(pawn,startRowPawn,startColPawn);
         Turn turn = new Turn(startRow, startCol, endRow,endCol, ChessColor.WHITE);
+        assertTrue(knight.validMove(turn,testBoard));
     }
 
     @Test
     public void knightCantCaptureSameColor() {
+        Board testBoard = new Board();
+        Piece knight = new Knight("Knight", ChessColor.WHITE, ChessSymbols.WHITE_KNIGHT);
+        Piece pawn = new Pawn("Pawn", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
+        int startRow = 4;
+        int startCol = 4;
+        int startRowPawn = 2;
+        int startColPawn = 3;
+        int endRow = 2;
+        int endCol = 3;
+        testBoard.setPiece(knight,startRow,startCol);
+        testBoard.setPiece(pawn,startRowPawn,startColPawn);
+        Turn turn = new Turn(startRow, startCol, endRow,endCol, ChessColor.WHITE);
+        assertFalse(knight.validMove(turn,testBoard));
 
     }
 }
