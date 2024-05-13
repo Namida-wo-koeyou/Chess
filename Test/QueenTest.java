@@ -72,29 +72,25 @@ public class QueenTest {
     public void queenDoesntMoveOverPieces(){Board testBoard = new Board();
         Piece queen = new Queen("Queen", ChessColor.WHITE, ChessSymbols.WHITE_QUEEN);
         Piece pawn = new Pawn("Pawn", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
-        int startRowQueen = 5;
-        int startColQueen = 5;
-        int startRowPawn=4;
-        int startColPawn=4;
+        int startRow = 5;
+        int startCol = 5;
         int endRow=3;
         int endCol=3;
-        testBoard.setPiece(queen,startRowQueen, startColQueen);
-        testBoard.setPiece(pawn, startRowPawn, startColPawn);
-        Turn turn = new Turn(startRowQueen,startColQueen,endRow,endCol,queen.color);
+        testBoard.setPiece(queen,startRow, startCol);
+        testBoard.setPiece(pawn, 4, 4);
+        Turn turn = new Turn(startRow,startCol,endRow,endCol,queen.color);
         assertFalse(queen.validMove(turn,testBoard));}
     @Test
     public void queenDoesntCaptureOwnPieces(){Board testBoard = new Board();
         Piece queen = new Queen("Queen", ChessColor.WHITE, ChessSymbols.WHITE_QUEEN);
         Piece pawn = new Pawn("Pawn", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
-        int startRowQueen = 5;
-        int startColQueen = 5;
-        int startRowPawn=3;
-        int startColPawn=3;
+        int startRow = 5;
+        int startCol = 5;
         int endRow=3;
         int endCol=3;
-        testBoard.setPiece(queen,startRowQueen, startColQueen);
-        testBoard.setPiece(pawn, startRowPawn, startColPawn);
-        Turn turn = new Turn(startRowQueen,startColQueen,endRow,endCol,queen.color);
+        testBoard.setPiece(queen,startRow, startCol);
+        testBoard.setPiece(pawn, 3,3);
+        Turn turn = new Turn(startRow,startCol,endRow,endCol,queen.color);
         assertFalse(queen.validMove(turn,testBoard));}
     @Test
     public void queenDoesCaptureEnemyPieces(){Board testBoard = new Board();

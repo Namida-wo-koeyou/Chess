@@ -58,6 +58,21 @@ public class BishopTest {
 
         Turn turn = new Turn(startRowBishop,startColBishop,endRow,endCol,bishop.color);
         assertFalse(bishop.validMove(turn,testBoard));}
+    @Test
+    public void BishopCaptures(){
+        Board testBoard = new Board();
+        Piece bishop = new Bishop("Bishop", ChessColor.WHITE, ChessSymbols.WHITE_BISHOP);
+        Piece pawn = new Pawn("Pawn", ChessColor.BLACK, ChessSymbols.BLACK_PAWN);
+        int startRow =5;
+        int startCol = 5;
+        int endRow = 4;
+        int endCol = 4;
+        testBoard.setPiece(bishop,startRow, startCol);
+        testBoard.setPiece(pawn,4, 5);
+        Turn turn = new Turn(startRow, startCol, endRow, endCol,bishop.color);
+        assertTrue(bishop.validMove(turn,testBoard));
+    }
 }
+
 
 

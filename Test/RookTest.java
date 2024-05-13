@@ -43,15 +43,27 @@ public class RookTest {
     Board testBoard = new Board();
     Piece rook = new Rook("Rook", ChessColor.WHITE, ChessSymbols.WHITE_ROOK);
     Piece pawn = new Pawn("Pawn", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
-    int startRowRook =5;
-    int startColRook = 5;
-    int startRowPawn = 4;
-    int startColPawn = 5;
+    int startRow =5;
+    int startCol = 5;
     int endRow = 2;
     int endCol = 5;
-    testBoard.setPiece(rook,startRowRook, startColRook);
-    testBoard.setPiece(pawn,startRowPawn, startColPawn);
-    Turn turn = new Turn(startRowRook, startColRook, endRow, endCol,rook.color);
+    testBoard.setPiece(rook,startRow, startCol);
+    testBoard.setPiece(pawn,4, 5);
+    Turn turn = new Turn(startRow, startCol, endRow, endCol,rook.color);
     assertFalse(rook.validMove(turn,testBoard));
+    }
+    @Test
+    public void rookCapturesEnemyPieces(){
+        Board testBoard = new Board();
+        Piece rook = new Rook("Rook", ChessColor.WHITE, ChessSymbols.WHITE_ROOK);
+        Piece pawn = new Pawn("Pawn", ChessColor.BLACK, ChessSymbols.BLACK_PAWN);
+        int startRow =5;
+        int startCol = 5;
+        int endRow = 4;
+        int endCol = 5;
+        testBoard.setPiece(rook,startRow, startCol);
+        testBoard.setPiece(pawn,4, 5);
+        Turn turn = new Turn(startRow, startCol, endRow, endCol,rook.color);
+        assertTrue(rook.validMove(turn,testBoard));
     }
 }

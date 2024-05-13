@@ -8,15 +8,13 @@ public class KnightTest {
         Board testBoard = new Board();
         Piece knight = new Knight("Knight",ChessColor.WHITE,ChessSymbols.WHITE_KNIGHT);
         Piece pawn = new Pawn("Pawn",ChessColor.WHITE,ChessSymbols.WHITE_PAWN);
-        int startRowKnight = 5;
-        int startColKnight = 5;
-        int startRowPawn = 4;
-        int startColPawn = 5;
+        int startRow= 5;
+        int startCol = 5;
         int endRow = 3;
         int endCol = 5;
-        testBoard.setPiece(knight,startRowKnight,startColKnight);
-        testBoard.setPiece(pawn,startRowPawn,startColPawn);
-        Turn turn = new Turn(startRowKnight,startColKnight,endRow,endCol,knight.color);
+        testBoard.setPiece(knight,startRow,startCol);
+        testBoard.setPiece(pawn,4,5);
+        Turn turn = new Turn(startRow,startCol,endRow,endCol,knight.color);
         assertFalse(knight.validMove(turn,testBoard));
     }
 
@@ -52,12 +50,10 @@ public class KnightTest {
         Piece pawn = new Pawn("Pawn", ChessColor.BLACK, ChessSymbols.BLACK_PAWN);
         int startRow = 4;
         int startCol = 4;
-        int startRowPawn = 2;
-        int startColPawn = 3;
         int endRow = 2;
         int endCol = 3;
         testBoard.setPiece(knight,startRow,startCol);
-        testBoard.setPiece(pawn,startRowPawn,startColPawn);
+        testBoard.setPiece(pawn,endRow,endCol);
         Turn turn = new Turn(startRow, startCol, endRow,endCol, ChessColor.WHITE);
         assertTrue(knight.validMove(turn,testBoard));
     }
@@ -69,12 +65,10 @@ public class KnightTest {
         Piece pawn = new Pawn("Pawn", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
         int startRow = 4;
         int startCol = 4;
-        int startRowPawn = 2;
-        int startColPawn = 3;
         int endRow = 2;
         int endCol = 3;
         testBoard.setPiece(knight,startRow,startCol);
-        testBoard.setPiece(pawn,startRowPawn,startColPawn);
+        testBoard.setPiece(pawn,2,3);
         Turn turn = new Turn(startRow, startCol, endRow,endCol, ChessColor.WHITE);
         assertFalse(knight.validMove(turn,testBoard));
 
