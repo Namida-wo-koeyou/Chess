@@ -173,7 +173,7 @@ public boolean unobstructedPath(Turn currentTurn){
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("  A B C D E F G H \n");
+        sb.append("  1 2 3 4 5 6 7 8 \n");
         int i = 1;
         for (Piece[] row : board) {
             sb.append(i).append(" ");
