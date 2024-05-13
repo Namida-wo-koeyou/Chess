@@ -9,4 +9,4 @@ Features:
 
 How to Play: Run the code.
 
-Credits: This project was created by [].
+Credits: This project was created by Engels Olivero De La Cruz and Dillon Herman.
