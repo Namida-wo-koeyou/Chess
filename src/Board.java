@@ -40,9 +40,14 @@ public class Board {
         board[6][7] = new Pawn("PawnW", ChessColor.WHITE, ChessSymbols.WHITE_PAWN);
     }
 public boolean unobstructedPath(Turn currentTurn){
-        if (currentTurn.endCol== currentTurn.startCol && currentTurn.startRow!= currentTurn.endRow){return  unobstructedPathInColumnExists(currentTurn);}
-        else if (currentTurn.endCol!= currentTurn.startCol && currentTurn.startRow== currentTurn.endRow){return unobstructedPathInRowExists(currentTurn);}
-        else if (Math.abs(currentTurn.endCol-currentTurn.startCol) == Math.abs(currentTurn.endRow-currentTurn.startRow))return unobstructedPathInDiagonalExist(currentTurn);{
+        if (currentTurn.endCol== currentTurn.startCol && currentTurn.startRow!= currentTurn.endRow){
+            return  unobstructedPathInColumnExists(currentTurn);
+        }
+        else if (currentTurn.endCol!= currentTurn.startCol && currentTurn.startRow== currentTurn.endRow){
+            return unobstructedPathInRowExists(currentTurn);
+        }
+        else if (Math.abs(currentTurn.endCol-currentTurn.startCol) == Math.abs(currentTurn.endRow-currentTurn.startRow))
+            return unobstructedPathInDiagonalExist(currentTurn);{
 
         } return false;
 }
@@ -82,14 +87,23 @@ public boolean unobstructedPath(Turn currentTurn){
     //for diagonals, add or subtract one to row then column separately then check if it is null repeatedly for
     // every diagonal unit of movement
     //the difference between the position for diagonals can be changed by a positive or negative integer value
-    public boolean unobstructedPathInDiagonalExist(Turn currentTurn) { // it works!
+    public boolean unobstructedPathInDiagonalExist(Turn currentTurn) { // it worked at one point!
         //bottom-left
         if (currentTurn.startRow < currentTurn.endRow && currentTurn.startCol > currentTurn.endCol) {
             int l = currentTurn.startCol;
             for (int i = currentTurn.startRow; i < currentTurn.endRow; i++) {
                 if (board[i + 1][l - 1] != null) {
+                    if(i + 1 != currentTurn.endRow || l - 1 != currentTurn.endCol){
+                        return false;
+                    }
 
-                    return false;
+                    ChessColor currentColor = board[currentTurn.startRow][currentTurn.startCol].color;
+                    if(board[currentTurn.endRow][currentTurn.endCol] == null){
+                        return true;
+                    }
+                    ChessColor targetColor = board[currentTurn.endRow][currentTurn.endCol].color;
+                    return currentColor != targetColor;
+
                 }
                 l--;
 
@@ -99,8 +113,16 @@ public boolean unobstructedPath(Turn currentTurn){
             int l = currentTurn.startCol;
             for (int i = currentTurn.startRow; i > currentTurn.endRow; i--) {
                 if (board[i - 1][l - 1] != null) {
+                    if(i - 1 != currentTurn.endRow || l - 1 != currentTurn.endCol){
+                        return false;
+                    }
 
-                    return false;
+                    ChessColor currentColor = board[currentTurn.startRow][currentTurn.startCol].color;
+                    if(board[currentTurn.endRow][currentTurn.endCol] == null){
+                        return true;
+                    }
+                    ChessColor targetColor = board[currentTurn.endRow][currentTurn.endCol].color;
+                    return currentColor != targetColor;
                 }
                 l--;
 
@@ -110,8 +132,16 @@ public boolean unobstructedPath(Turn currentTurn){
             int l = currentTurn.startCol;
             for (int i = currentTurn.startRow; i > currentTurn.endRow; i--) {
                 if (board[i - 1][l + 1] != null) {
+                    if(i - 1 != currentTurn.endRow || l + 1 != currentTurn.endCol){
+                        return false;
+                    }
 
-                    return false;
+                    ChessColor currentColor = board[currentTurn.startRow][currentTurn.startCol].color;
+                    if(board[currentTurn.endRow][currentTurn.endCol] == null){
+                        return true;
+                    }
+                    ChessColor targetColor = board[currentTurn.endRow][currentTurn.endCol].color;
+                    return currentColor != targetColor;
                 }
                 l++;
 
@@ -121,8 +151,16 @@ public boolean unobstructedPath(Turn currentTurn){
             int l = currentTurn.startCol;
             for (int i = currentTurn.startRow; i < currentTurn.endRow; i++) {
                 if (board[i + 1][l + 1] != null) {
+                    if(i + 1 != currentTurn.endRow || l + 1 != currentTurn.endCol){
+                        return false;
+                    }
 
-                    return false;
+                    ChessColor currentColor = board[currentTurn.startRow][currentTurn.startCol].color;
+                    if(board[currentTurn.endRow][currentTurn.endCol] == null){
+                        return true;
+                    }
+                    ChessColor targetColor = board[currentTurn.endRow][currentTurn.endCol].color;
+                    return currentColor != targetColor;
                 }
                 l++;
 
